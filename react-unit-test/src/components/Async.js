@@ -6,11 +6,9 @@ const Async = () => {
   const fetchData = useCallback(async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const responseData = await response.json();
-    if (!response.ok) {
-      setPosts([]);
-      return;
+    if (response.ok) {
+      setPosts(responseData);
     }
-    setPosts(responseData);
   }, []);
 
   useEffect(() => {
